@@ -16,8 +16,7 @@ pyenv global 3.8.0
 python --version
 ```
 
-# Server
-
+# Server 
 ```
 python -c 'exec("try:import SimpleHTTPServer as m\nexcept:import http.server as m");m.test(HandlerClass=m.SimpleHTTPRequestHandler)'
 
@@ -34,9 +33,20 @@ print(django.get_version())
 ```
 
 ```
-django-admin startproject [myproject]
-cd [myproject]
+django-admin startproject config
+cd config
 python manage.py runserver
 
 localhost:8000
+```
+
+```
+python manage.py startapp api
+```
+
+# tool
+
+```
+pip install flake8
+pip install black
 ```
