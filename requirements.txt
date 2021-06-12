@@ -2,5 +2,7 @@ django
 django-environ
 channels
 
+ibm-watson
+
 black
 flake8

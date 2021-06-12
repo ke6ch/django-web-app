@@ -130,3 +130,9 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # Channels
 ASGI_APPLICATION = "config.asgi.application"
+
+# Watson Assistant
+API_KEY = env("API_KEY")
+URL = env("URL")
+VERSION = env("VERSION")
+ASSISTANT_ID = env("ASSISTANT_ID")
