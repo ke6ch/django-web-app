@@ -1,6 +1,7 @@
 django
 django-environ
 channels
+pytest-django
 
 ibm-watson
 
