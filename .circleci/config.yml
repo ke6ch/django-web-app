@@ -1,11 +1,10 @@
 version: 2.1
 
 workflows:
-  django-web-app: 
+  django-web-app:
     jobs:
-      - build-and-test
-          context:
-            - python
+      - build-and-test:
+          context: python
 
 jobs:
   build-and-test:
