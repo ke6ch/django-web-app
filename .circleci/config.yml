@@ -4,7 +4,8 @@ workflows:
   django-web-app: 
     jobs:
       - build-and-test
-          context: python
+          context:
+            - python
 
 jobs:
   build-and-test:
