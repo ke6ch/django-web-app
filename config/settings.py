@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import environ
 from pathlib import Path
+
+import environ
 
 env = environ.Env()
 env.read_env(".env")
@@ -30,8 +31,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [] if DEBUG else ["127.0.0.1", ".herokuapp.com"]
 
 # Application definition
 
@@ -75,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
+ASGI_APPLICATION = "config.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -123,16 +123,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
 
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-
-# Channels
-ASGI_APPLICATION = "config.asgi.application"
 
 # Watson Assistant
 API_KEY = env("API_KEY")
 URL = env("URL")
 VERSION = env("VERSION")
 ASSISTANT_ID = env("ASSISTANT_ID")
+
+# Channels
+CHANNEL_LAYERS = {"default": {"BACKEND": "channels.layers.InMemoryChannelLayer"}}
